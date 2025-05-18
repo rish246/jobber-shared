@@ -25,8 +25,8 @@ jobs:
           cache: 'npm'
 
       - name: Echo env var
-        run: echo "NPM_TOKEN=${{ secrets.NPM_TOKEN }}" >> $GITHUB_ENV
-        
+        run: echo "NPM_TOKEN=${{ secrets.NPM_TOKEN }}"
+
       - name: Configure npm auth
         run: |
           echo "@rish246:registry=https://npm.pkg.github.com" > .npmrc
