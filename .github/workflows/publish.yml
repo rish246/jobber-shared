@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build
+      - run: |
+          echo @rish246:https://npm.pkg.github.com > ./build/.npmrc
+          echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> ./build/.npmrc
+      - run: npm publish --access public
+        working-directory: ./build
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    permissions:
+      contents: read
+      packages: write
