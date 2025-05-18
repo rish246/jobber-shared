@@ -25,7 +25,9 @@ jobs:
           cache: 'npm'
 
       - name: Echo env var
-        run: echo "NPM_TOKEN=${{ secrets.NPM_TOKEN }}"
+        run: echo "NPM_TOKEN=${NPM_TOKEN}"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Configure npm auth
         run: |
