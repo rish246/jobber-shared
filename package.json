@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "index.js",
   "description": "Helpers library for Jobber app",
@@ -29,8 +29,8 @@
   },
   "exports": {
     ".": {
-      "import": "./build/src/index.js",
-      "require": "./build/src/index.js"
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js"
     },
     "./icons": {
       "import": "./src/icons/index.js",
